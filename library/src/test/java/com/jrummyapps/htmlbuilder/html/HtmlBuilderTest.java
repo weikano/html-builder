@@ -17,7 +17,7 @@
 
 package com.jrummyapps.htmlbuilder.html;
 
-import com.jrummyapps.android.util.HtmlBuilder;
+import com.jrummyapps.android.util.HtmlBodyBuilder;
 
 import org.junit.Test;
 
@@ -26,19 +26,19 @@ import static org.junit.Assert.assertEquals;
 public class HtmlBuilderTest {
 
   @Test public void anchor_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.a("https://www.google.com/", "Google");
     assertEquals(html.toString(), "<a href=\"https://www.google.com/\">Google</a>");
   }
 
   @Test public void bold_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.b("bold text");
     assertEquals(html.toString(), "<b>bold text</b>");
   }
 
   @Test public void headers_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.h1("This is heading 1");
     html.h2("This is heading 2");
     html.h3("This is heading 3");
@@ -51,12 +51,12 @@ public class HtmlBuilderTest {
   }
 
   @Test public void img_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder.Img().src("smiley.gif").alt("Smiley face").height(42).width(42).close();
+    HtmlBodyBuilder html = new HtmlBodyBuilder.Img().src("smiley.gif").alt("Smiley face").height(42).width(42).close();
     assertEquals(html.toString(), "<img src=\"smiley.gif\" alt=\"Smiley face\" height=\"42\" width=\"42\">");
   }
 
   @Test public void font_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.font().size(3).color("red").text("This is some text!").close().append('\n');
     html.font().size(2).color("blue").text("This is some text!").close().append('\n');
     html.font().face("verdana").color("green").text("This is some text!").close();
@@ -67,7 +67,7 @@ public class HtmlBuilderTest {
 
   @SuppressWarnings("NewApi")
   @Test public void unorderedList_isExpectedHtml() {
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.ul()
         .li("Coffee")
         .li("Tea")
@@ -78,7 +78,7 @@ public class HtmlBuilderTest {
 
   @Test public void loremIpsum_isExpectedHtml() {
     // Lorem Ipsum with p, b, and i tags.
-    HtmlBuilder html = new HtmlBuilder();
+    HtmlBodyBuilder html = new HtmlBodyBuilder();
     html.p()
         .append(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. ")
